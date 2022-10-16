@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# First of all, there is one bad news: you cannot update everything in this script.
+# Below is my current status and methods.
+#
+# * System pacakges: apt update && apt upgrade
+# * Firmware: fwupdgmr refresh && fwupdgmr update
+# * Chrome, Firefox, and Thunderbird: they won't be updated unless booted (maybe?)
+#   if you installed binary from upstreams
+# * Emacs itself: using distro's package
+# * Node.js: 3rd party's APT repositry https://github.com/nodesource/distributions
+# * Ruby: `git pull && make` (just my preference)
+# * TeXLive: manual installation annually https://www.tug.org/texlive/
+# * Zoom, bat, delta, ...: automated with local APT repository
+#     * see https://github.com/tadd/local-apt-repos
+
+# Anyway, let's get started.
+
+# Emacs packages, requires `auto-pacakge-update` package
+emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &a
+# Ruby: gems
+(gem update --system && gem update && gem clean) &
+# TeXLive: LaTeX pacakges
+tlmgr update --self --all &
+# JavaScript: npms
+npm -g update &
+# Rust: toolchain
+(rustup self update && rustup update) &
+# Rust: update single binary `rust-analyzer` with my local script
+which update-rupdate-rust-analyzer >/dev/null && update-rust-analyzer &
+# Flatpaks
+flatpak update &
+
+# Everything is started, time will solve everything.
+# It may take a long time, so now you can have some tea or coffee.
+wait
+
+# Well done! You did hard work.
+# But I'd like to add one thing: what the hell??
