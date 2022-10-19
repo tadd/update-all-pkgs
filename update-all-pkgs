@@ -17,7 +17,7 @@
 # Anyway, let's get started.
 
 # Emacs packages, requires `auto-pacakge-update` package
-emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &a
+emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &
 # Ruby: gems
 (gem update --system && gem update && gem clean) &
 # TeXLive: LaTeX pacakges
