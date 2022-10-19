@@ -29,7 +29,7 @@ npm -g update &
 # Rust: update single binary `rust-analyzer` with my local script
 which update-rupdate-rust-analyzer >/dev/null && update-rust-analyzer &
 # Flatpaks
-flatpak update &
+flatpak update -y &
 
 # Everything is started, time will solve everything.
 # It may take a long time, so now you can have some tea or coffee.
