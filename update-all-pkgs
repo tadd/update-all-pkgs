@@ -23,7 +23,7 @@ emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &
 # TeXLive: LaTeX pacakges
 tlmgr update --self --all &
 # JavaScript: npms
-npm -g update &
+npm --no-progress -g update &
 # Rust: toolchain
 (rustup self update && rustup update) &
 # Rust: update single binary `rust-analyzer` with my local script
