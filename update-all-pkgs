@@ -10,7 +10,7 @@
 # * Emacs itself: using distro's package
 # * Node.js: 3rd party's APT repositry https://github.com/nodesource/distributions
 # * Ruby: `git pull && make` (just my preference)
-# * TeXLive: manual installation annually https://www.tug.org/texlive/
+# * TeXLive itself: manual installation annually https://www.tug.org/texlive/
 # * Zoom, bat, delta, ...: automated with local APT repository
 #     * see https://github.com/tadd/local-apt-repos
 
