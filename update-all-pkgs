@@ -9,10 +9,11 @@
 #   if you installed binary from upstreams
 # * Emacs itself: using distro's package
 # * Node.js: 3rd party's APT repositry https://github.com/nodesource/distributions
+#     * But you'll need to edit the source file for every major-update
 # * Ruby: `git pull && make` (just my preference)
 # * TeXLive itself: manual installation annually https://www.tug.org/texlive/
 # * Zoom, bat, delta, ...: automated with local APT repository
-#     * see https://github.com/tadd/local-apt-repos
+#     * See https://github.com/tadd/local-apt-repos
 
 # Anyway, let's get started.
 
