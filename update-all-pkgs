@@ -28,7 +28,7 @@ npm --no-progress -g update &
 # Rust: toolchain
 (rustup self update && rustup update) &
 # Rust: update single binary `rust-analyzer` with my local script
-which update-rupdate-rust-analyzer >/dev/null && update-rust-analyzer &
+which update-rust-analyzer >/dev/null && update-rust-analyzer &
 # Flatpaks
 flatpak update -y &
 
