@@ -25,8 +25,8 @@ emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &
 tlmgr update --self --all &
 # JavaScript: npms
 npm --no-progress -g update &
-# Rust: toolchain
-(rustup self update && rustup update) &
+# Rust: toolchain and `cargo install`-ed packages, needs crate `cargo-update`
+(rustup self update && rustup update && cargo install-update -a) &
 # Rust (again): update single binary `rust-analyzer` with my local script
 which update-rust-analyzer >/dev/null && update-rust-analyzer &
 # Flatpaks
