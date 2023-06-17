@@ -17,20 +17,24 @@
 
 # Anyway, let's get started.
 
+v() {
+    prog="$1"
+    "$@" 2>&1 |sed "s/^/${prog}: /g"
+}
 # Emacs packages, requires `auto-pacakge-update` package
-emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &
+v emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &
 # Ruby: gems
-(gem update --system && gem update && gem clean) &
+(v gem update --system && v gem update && v gem clean) &
 # TeXLive: LaTeX pacakges
-tlmgr update --self --all &
+v tlmgr update --self --all &
 # JavaScript: npms
-npm --no-progress -g update &
+v npm --no-progress -g update &
 # Rust: toolchain and `cargo install`-ed packages, needs crate `cargo-update`
-(rustup self update && rustup update && cargo install-update -a) &
+(v rustup self update && v rustup update && v cargo install-update -a) &
 # Rust (again): update single binary `rust-analyzer` with my local script
-which update-rust-analyzer >/dev/null && update-rust-analyzer &
+which update-rust-analyzer >/dev/null && v update-rust-analyzer &
 # Flatpaks
-flatpak update -y &
+v flatpak update -y &
 
 # Everything is started, time will solve everything.
 # It may take a long time, so now you can have some tea or coffee.
