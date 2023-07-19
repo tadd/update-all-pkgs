@@ -18,8 +18,8 @@
 # Anyway, let's get started.
 
 v() {
-    prog="$1"
-    "$@" 2>&1 |sed "s/^/${prog}: /g"
+    label="$1: "
+    "$@" 2>&1 |sed "/^${label}/!s/^/${label}/g"
 }
 # Emacs packages, requires `auto-pacakge-update` package
 v emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &
