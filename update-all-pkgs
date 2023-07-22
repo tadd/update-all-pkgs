@@ -22,7 +22,7 @@ v() {
     "$@" 2>&1 |sed "/^${label}/!s/^/${label}/g"
 }
 # Emacs packages, requires `auto-pacakge-update` package
-v emacs -Q --batch --eval '(progn(package-initialize)(auto-package-update-now))' &
+v emacs --batch -u $USER -f auto-package-update-now &
 # Ruby: gems
 (v gem update --system && v gem update && v gem clean) &
 # TeXLive: LaTeX pacakges
