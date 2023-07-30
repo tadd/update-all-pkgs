@@ -3,10 +3,10 @@
 # First of all, there is one bad news: you cannot update everything in this script.
 # Below is my current status and methods.
 #
-# * System pacakges: apt update && apt upgrade
+# * System packages: apt update && apt upgrade
 # * Firmware: fwupdgmr refresh && fwupdgmr update
 # * Chrome, Firefox, and Thunderbird: they won't be updated unless booted (maybe?)
-#   if you installed binary from upstreams
+#   if you installed the binary from upstreams
 # * Emacs itself: using distro's package
 # * Node.js: 3rd party's APT repositry https://github.com/nodesource/distributions
 #     * But you'll need to edit the source file for every major-update
@@ -17,10 +17,12 @@
 
 # Anyway, let's get started.
 
+# Utility: show the program name on each line
 v() {
     label="$1: "
     "$@" 2>&1 |sed "/^${label}/!s/^/${label}/g"
 }
+
 # Emacs packages, requires `auto-pacakge-update` package
 v emacs --batch -u $USER -f auto-package-update-now &
 # Ruby: gems
