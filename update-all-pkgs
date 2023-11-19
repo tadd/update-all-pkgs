@@ -30,7 +30,7 @@ v emacs --batch -u $USER -f auto-package-update-now &
  v gem update &&
  v gem clean) &
 # TeXLive: LaTeX pacakges
-v tlmgr update --self --all &
+v tlmgr update --self --all --reinstall-forcibly-removed &
 # JavaScript: npms
 v npm --no-progress -g update &
 # Rust: toolchain and `cargo install`-ed packages, needs crate `cargo-update`
