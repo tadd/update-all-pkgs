@@ -36,7 +36,7 @@ v npm --no-progress -g update &
 # Rust (again): update single binary `rust-analyzer` with my local script
 which update-rust-analyzer >/dev/null && v update-rust-analyzer &
 # Flatpaks
-v flatpak update -y &
+v flatpak update -y && v flatpak uninstall --runtime --unused &
 
 # Everything is started, time will solve everything.
 # It may take a long time, so now you can have some tea or coffee.
