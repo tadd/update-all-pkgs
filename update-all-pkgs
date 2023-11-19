@@ -20,23 +20,28 @@
 # Utility: show the program name on each line
 v() {
     label="$1: "
-    "$@" 2>&1 |sed "/^${label}/!s/^/${label}/g"
+    "$@" 2>&1 |sed "/^${label}/!s/^/${label}/"
 }
 
 # Emacs packages, requires `auto-pacakge-update` package
 v emacs --batch -u $USER -f auto-package-update-now &
 # Ruby: gems
-(v gem update --system && v gem update && v gem clean) &
+(v gem update --system &&
+ v gem update &&
+ v gem clean) &
 # TeXLive: LaTeX pacakges
 v tlmgr update --self --all &
 # JavaScript: npms
 v npm --no-progress -g update &
 # Rust: toolchain and `cargo install`-ed packages, needs crate `cargo-update`
-(v rustup self update && v rustup update && v cargo install-update -a) &
+(v rustup self update &&
+ v rustup update && v cargo install-update -a) &
 # Rust (again): update single binary `rust-analyzer` with my local script
-which update-rust-analyzer >/dev/null && v update-rust-analyzer &
+(which update-rust-analyzer >/dev/null &&
+ v update-rust-analyzer) &
 # Flatpaks
-v flatpak update -y && v flatpak uninstall --runtime --unused &
+(v flatpak update -y &&
+ v flatpak uninstall --runtime --unused) &
 
 # Everything is started, time will solve everything.
 # It may take a long time, so now you can have some tea or coffee.
