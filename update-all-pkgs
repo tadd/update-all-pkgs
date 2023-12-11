@@ -23,13 +23,13 @@ v() {
     "$@" 2>&1 |sed "/^${label}/!s/^/${label}/"
 }
 
-# Emacs packages, requires `auto-pacakge-update` package
+# Emacs packages, requires `auto-package-update` package
 v emacs --batch -u $USER -f auto-package-update-now &
 # Ruby: gems
 (v gem update --system &&
  v gem update &&
  v gem clean) &
-# TeXLive: LaTeX pacakges
+# TeXLive: LaTeX packages
 v tlmgr update --self --all --reinstall-forcibly-removed &
 # JavaScript: npms
 v npm --no-progress -g update &
