@@ -35,7 +35,7 @@ v tlmgr update --self --all --reinstall-forcibly-removed &
 v npm --no-progress -g update &
 # Rust: toolchain and `cargo install`-ed packages, needs crate `cargo-update`
 (v rustup self update &&
- v rustup update && v cargo install-update -a) &
+ v rustup update && v cargo install-update -ag) &
 # Rust (again): update single binary `rust-analyzer` with my local script
 (which update-rust-analyzer >/dev/null &&
  v update-rust-analyzer) &
