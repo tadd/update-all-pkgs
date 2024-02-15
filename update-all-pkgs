@@ -24,7 +24,7 @@ v() {
 }
 
 # Emacs packages, requires `auto-package-update` package
-v emacs --batch -u $USER -f auto-package-update-now &
+v emacs -Q --batch -u $USER -f auto-package-update-now &
 # Ruby: gems
 (v gem update --system &&
  v gem update &&
