@@ -36,9 +36,6 @@ v npm --no-progress -g update &
 # Rust: toolchain and `cargo install`-ed packages, needs crate `cargo-update`
 (v rustup self update &&
  v rustup update && v cargo install-update -ag) &
-# Rust (again): update single binary `rust-analyzer` with my local script
-(which update-rust-analyzer >/dev/null &&
- v update-rust-analyzer) &
 # Flatpaks
 (v flatpak update -y &&
  v flatpak uninstall -y --runtime --unused) &
