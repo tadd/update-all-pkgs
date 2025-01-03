@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # First of all, there is one bad news: you cannot update everything in this script.
 # Below is my current status and methods.
@@ -18,28 +18,56 @@
 # Anyway, let's get started.
 
 # Utility: show the program name on each line
+verbose=0
 v() {
+    if (( ! verbose )); then
+        "$@"
+        return
+    fi
     label="$1: "
     "$@" 2>&1 |sed "/^${label}/!s/^/${label}/"
 }
 
 # Emacs packages, requires `auto-package-update` package
-v emacs -Q --batch -u $USER -f auto-package-update-now &
+up_emacs() {
+    v emacs -Q --batch -u $USER -f auto-package-update-now
+}
 # Ruby: gems
-(v gem update --system &&
- v gem update &&
- v gem clean) &
+up_gem() {
+    v gem update --system &&
+    v gem update &&
+    v gem clean
+}
 # TeXLive: LaTeX packages
-v tlmgr update --self --all --reinstall-forcibly-removed &
+up_texlive() {
+    v tlmgr update --self --all --reinstall-forcibly-removed
+}
 # JavaScript: npms
-v npm --no-progress -g update &
+up_npm() {
+    v npm --no-progress -g update
+}
 # Rust: toolchain and `cargo install`-ed packages, needs crate `cargo-update`
-(v rustup self update &&
- v rustup update && v cargo install-update -ag) &
+up_rust() {
+    v rustup self update &&
+    v rustup update &&
+    v cargo install-update -ag
+}
 # Flatpaks
-(v flatpak update -y &&
- v flatpak uninstall -y --runtime --unused) &
+up_flatpak() {
+    v flatpak update -y &&
+    v flatpak uninstall -y --runtime --unused
+}
 
+main() {
+    verbose=1
+    up_emacs &
+    up_gem &
+    up_texlive &
+    up_npm &
+    up_rust &
+    up_flatpak &
+}
+main
 # Everything is started, time will solve everything.
 # It may take a long time, so now you can have some tea or coffee.
 wait
