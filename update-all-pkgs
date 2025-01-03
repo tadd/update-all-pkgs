@@ -87,5 +87,7 @@ main() {
             wait
             ;;
     esac
+    local -r progname=$(basename $0)
+    echo $progname: done. >&2
 }
 main "$@"
